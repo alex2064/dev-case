@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+
+	<settings>
+		<!-- Mybatis 파라미터가 Null인경우 에러 발생하지 않게 설정 -->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		<!-- Table(A_COLUMN) -> VO(aColumn) 자동 resultMap  -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<!-- 자동매핑 대상중 알 수 없는 컬럼을 발견했을때 행위를 명시 -->
+		<setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+		<!-- 데이터베이스로의 응답을 얼마나 오래 기다릴지를 판단하는 타임아웃 -->
+		<setting name="defaultStatementTimeout" value="25"/>
+		<!-- 조회결과를 가져올때 가져올 데이터 크기를 제어하는 용도 -->
+		<setting name="defaultFetchSize" value="1000"/>
+	</settings>
+
+	<typeAliases>
+		<!-- VO -->
+		<package name="info.devcase.common.domain"/>
+	</typeAliases>
+	
+</configuration>
