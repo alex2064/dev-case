@@ -23,12 +23,21 @@
 	</bean>
 	-->
 	
-	<!-- SQL Server	-->
+	<!-- SQL Server	
 	<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
 		<property name="url" value="jdbc:sqlserver://KIMDONGHUN:1433;DatabaseName=Study"></property>
 		<property name="username" value="***"></property>
 		<property name="password" value="***"></property>
+	</bean>
+	-->
+	
+	<!-- MariaDB -->
+	<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mariadb://localhost:3306/devcase"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="alex2064"></property>
 	</bean>
 
 	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
