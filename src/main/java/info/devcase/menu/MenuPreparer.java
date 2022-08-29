@@ -1,5 +1,6 @@
 package info.devcase.menu;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import info.devcase.common.dao.CommonDAO;
+import info.devcase.common.domain.AuthVO;
 import info.devcase.common.domain.CustomUser;
 import info.devcase.common.domain.MenuVO;
 import info.devcase.common.domain.UserVO;
@@ -31,9 +33,16 @@ public class MenuPreparer implements ViewPreparer{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
 		// User 정보
-		UserVO user = ((CustomUser)auth.getPrincipal()).getUser();
-		hashMap.put("authList", user.getAuthList());
+		//UserVO user = ((CustomUser)auth.getPrincipal()).getUser();
+		//hashMap.put("authList", user.getAuthList());
 		
+		
+		List<AuthVO> authList = new ArrayList<AuthVO>();
+		AuthVO authVO = new AuthVO();
+		authVO.setAuth("ALL");
+		authList.add(authVO);
+		hashMap.put("authList", authList);
+		 
 		List<MenuVO> list = commonDAO.selectList(namespace + ".selectMenuList", hashMap);
 		
         attributeContext.putAttribute("menuList", new Attribute(list), true);
