@@ -10,6 +10,7 @@ import lombok.Setter;
 public class UserVO {
 	private String id;
 	private String pwd;
-	private boolean enabled;
+	private String email;
+	private String enabled;
 	private List<AuthVO> authList;
 }

@@ -22,7 +22,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 		logger.error("Access Denied Handler");
 		logger.error("Redirect...");
 		
-		response.sendRedirect("/user/login");
+		response.sendRedirect("/sign/login");
 	}
 	
 }

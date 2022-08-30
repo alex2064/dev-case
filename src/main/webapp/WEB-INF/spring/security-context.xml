@@ -14,17 +14,17 @@
 	<security:http>
 		<!-- 주소별 접근 권한 -->
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>
-		<security:intercept-url pattern="/user/**" access="permitAll"/>
+		<security:intercept-url pattern="/sign/**" access="permitAll"/>
 		
 		<security:intercept-url pattern="/" access="permitAll"/>
 		<security:intercept-url pattern="/excel/**" access="hasAnyRole('ROLE_EXCEL', 'ROLE_ADMIN')"/>
 
 		
-		<security:form-login login-page="/user/login" 
+		<security:form-login login-page="/sign/login" 
 							authentication-success-handler-ref="customLoginSuccessHandler"
 							authentication-failure-handler-ref="customLoginFailureHandler"/>
 		<security:access-denied-handler ref="customAccessDeniedHandler"/>
-		<security:logout logout-url="/user/logout" invalidate-session="true"/>
+		<security:logout logout-url="/sign/logout" invalidate-session="true"/>
 	</security:http>
 	
 	<security:authentication-manager>

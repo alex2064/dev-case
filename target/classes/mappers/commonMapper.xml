@@ -6,6 +6,7 @@
 	<resultMap type="UserVO" id="UserMap">
 		<result property="id" column="ID"/>
 		<result property="pwd" column="PWD"/>
+		<result property="email" column="EMAIL"/>
 		<result property="enabled" column="ENABLED"/>
 		<collection property="authList" resultMap="authMap"></collection>
 	</resultMap>
@@ -18,6 +19,7 @@
 	<select id="login" resultMap="UserMap">
 		SELECT UPPER(A.ID) AS ID
 			, A.PWD
+			, UPPER(A.EMAIL) AS EMAIL
 			, A.ENABLED
 			, UPPER(B.AUTH) AS AUTH
 		  FROM BAS_USER A

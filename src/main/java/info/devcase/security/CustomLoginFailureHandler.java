@@ -44,7 +44,7 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
 		}
 		
 		// 로그인 페이지로 포워딩
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/user/login");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/sign/login");
 		dispatcher.forward(request, response);
 	}
 }

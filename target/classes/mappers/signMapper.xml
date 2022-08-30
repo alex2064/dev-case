@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SignMapper">
+
+	<select id="selectUser" parameterType="hashmap" resultType="UserVO">
+		SELECT ID
+			, UPPER(EMAIL) AS EMAIL
+		  FROM BAS_USER
+		 WHERE ID = UPPER(#{id})
+	</select>
+	
+	<insert id="insertUser" parameterType="hashmap">
+		INSERT INTO BAS_USER
+			(ID
+			, PWD
+			, EMAIL
+			, ENABLED
+			, CREATED_DATE
+			, CREATED_BY)
+		VALUES
+			( UPPER(#{id})
+			, #{pwd}
+			, #{email}
+			, 'Y'
+			, NOW()
+			, #{id})
+	</insert>
+	
+	<insert id="insertUserAuth" parameterType="hashmap">
+		INSERT INTO BAS_USER_AUTH
+			(ID
+			, AUTH)
+		VALUES
+			( UPPER(#{id})
+			, 'ALL')
+	</insert>
+	
+	<update id="updateUserPwd" parameterType="hashmap">
+		UPDATE BAS_USER
+		   SET PWD = #{pwd}
+		 WHERE ID = UPPER(#{id})
+	</update>
+	
+</mapper>

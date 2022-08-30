@@ -10,6 +10,10 @@
 		<put-attribute name="sidebar"	value="/WEB-INF/views/tiles/default/sidebar.jsp"/>
 		<put-attribute name="footer"	value="/WEB-INF/views/tiles/default/footer.jsp"/>
 	</definition>
+	
+	<definition name="sign" template="/WEB-INF/views/tiles/sign/layout.jsp">
+		<put-attribute name="title"		value="Dev Case - sign" />
+	</definition>
 
 	<definition name="empty" template="/WEB-INF/views/tiles/empty/layout.jsp">
 	</definition>
@@ -18,6 +22,10 @@
 	
 	<definition name="index" extends="default">
 		<put-attribute name="content" value="/WEB-INF/views/index.jsp" />
+	</definition>
+
+	<definition name="sign/*" extends="sign">
+		<put-attribute name="content" value="/WEB-INF/views/sign/{1}.jsp" />
 	</definition>
 
 	<definition name="*/*" extends="default">
