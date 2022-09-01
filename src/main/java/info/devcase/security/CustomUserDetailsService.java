@@ -31,6 +31,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 		logger.warn("queried by member mapper: " + vo);
 		
-		return new CustomUser(vo);
+		return new CustomUser(vo);	// Spring Security에 전달할 완성된 객체
 	}
 }

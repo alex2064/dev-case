@@ -30,17 +30,14 @@ public class MenuPreparer implements ViewPreparer{
 	@Override
 	public void execute(Request tilesContext, AttributeContext attributeContext) throws PreparerException{
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
+		List<AuthVO> authList = new ArrayList<AuthVO>();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
-		// User 정보
-		//UserVO user = ((CustomUser)auth.getPrincipal()).getUser();
-		//hashMap.put("authList", user.getAuthList());
-		
-		
-		List<AuthVO> authList = new ArrayList<AuthVO>();
-		AuthVO authVO = new AuthVO();
-		authVO.setAuth("ALL");
-		authList.add(authVO);
+		if(auth != null && auth.getPrincipal() instanceof CustomUser) {
+			UserVO user = ((CustomUser)auth.getPrincipal()).getUser();
+			authList = user.getAuthList();
+		}
+		authList.add(new AuthVO("","ALL"));
 		hashMap.put("authList", authList);
 		 
 		List<MenuVO> list = commonDAO.selectList(namespace + ".selectMenuList", hashMap);

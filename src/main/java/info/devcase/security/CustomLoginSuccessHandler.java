@@ -24,7 +24,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 										, Authentication auth) throws IOException, ServletException{
 		logger.warn("Login Success");		
 		
-		// Security가 요청을 가로챈 경우 사용자가 원래 요청했던 URI 정보 찾기
+		// Security가 요청을 인터셉터 했을 경우 사용자가 원래 요청했던 URI 정보 찾기
 		RequestCache requestCache = new HttpSessionRequestCache();
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 		//SavedRequest savedRequest = (SavedRequest)request.getSession().getAttribute("SPRING_SECURITY_SAVED_REQUEST");

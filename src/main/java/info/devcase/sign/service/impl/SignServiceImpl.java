@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,7 +20,7 @@ public class SignServiceImpl implements SignService{
 	private CommonDAO commonDAO;
 	
 	@Autowired
-	private PasswordEncoder pwEncoder;
+	private BCryptPasswordEncoder pwEncoder;
 	
 	@Autowired
 	private MailService mailService;

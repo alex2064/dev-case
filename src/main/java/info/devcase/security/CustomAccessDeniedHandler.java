@@ -22,7 +22,14 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 		logger.error("Access Denied Handler");
 		logger.error("Redirect...");
 		
-		response.sendRedirect("/sign/login");
+		String uri = request.getRequestURI();
+		if(uri.contains("/sign")) {
+			response.sendRedirect("/");
+		}else {
+			response.sendRedirect("/sign/login");
+		}
+		
+		
 	}
 	
 }

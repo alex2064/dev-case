@@ -8,4 +8,12 @@ import lombok.Setter;
 public class AuthVO {
 	private String id;
 	private String auth;
+	
+	public AuthVO() {
+	}
+	
+	public AuthVO(String id, String auth) {
+		this.id = id;
+		this.auth = auth;
+	}
 }

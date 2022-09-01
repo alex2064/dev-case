@@ -28,7 +28,7 @@ public class SignController {
 	private SignService signService;
 	
 	
-	@RequestMapping(value = "/sign/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/sign/login", method = {RequestMethod.GET, RequestMethod.POST})
 	public void pageLogin(HttpServletRequest request){
 		// 로그인 실패 후 다시 로그인 하면 요청 페이지가 로그인 페이지로 지정되니 인터셉터 전의 페이지 저장 
 		String uri = request.getHeader("Referer");
@@ -71,8 +71,10 @@ public class SignController {
 	@RequestMapping(value = "/user/pwd", method = RequestMethod.PUT)
 	public ModelAndView updateUserPwd(@RequestBody HashMap<String, Object> param, Authentication auth) throws Exception{
 		
-		UserVO user = ((CustomUser)auth.getPrincipal()).getUser();
-		param.put("id", user.getId());
+		if(auth != null) {
+			UserVO user = ((CustomUser)auth.getPrincipal()).getUser();
+			param.put("id", user.getId());
+		}
 		
 		ModelAndView mv = signService.updateUserPwd(param);
 		mv.setViewName("jsonView");

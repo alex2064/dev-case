@@ -33,7 +33,18 @@
 						</c:when>
 					</c:choose>
 				</c:forEach>
+				
+				<sec:authorize access="isAuthenticated()">
+					<li class="sidebar-item">
+						<form id="formLogout" action="/logout" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							<a onclick="$('#formLogout').submit();" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
+						</form>
+					</li>
+				</sec:authorize>
+				
 			</ul>
+			
 			<script type="text/javascript">
 				if(location.pathname != "/"){
 					$("a[href='" + location.pathname + "']").parent().attr("class", "active");
