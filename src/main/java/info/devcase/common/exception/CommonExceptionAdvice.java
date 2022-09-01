@@ -16,7 +16,7 @@ public class CommonExceptionAdvice {
 		logger.info(ex.toString());
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/common/error");
+		mv.setViewName("redirect:/common/404");
 		mv.addObject("exception", ex);
 		
 		return mv;
