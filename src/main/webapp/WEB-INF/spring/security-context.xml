@@ -33,8 +33,9 @@
 						delete-cookies="true"/>
 						
 		<security:access-denied-handler ref="customAccessDeniedHandler"/>
+		
 		<security:remember-me data-source-ref="dataSource"
-							key="hash" 
+							remember-me-parameter="remember-me"
 							token-validity-seconds="3600"
 							authentication-success-handler-ref="customLoginSuccessHandler"/>
 		

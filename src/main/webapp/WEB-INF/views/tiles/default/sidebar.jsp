@@ -34,7 +34,7 @@
 					</c:choose>
 				</c:forEach>
 				
-				<sec:authorize access="isAuthenticated()">
+				<sec:authorize access="isAuthenticated()"> <!-- 권한이 있는 경우 보여짐 -->
 					<li class="sidebar-item">
 						<form id="formLogout" action="/logout" method="post">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
