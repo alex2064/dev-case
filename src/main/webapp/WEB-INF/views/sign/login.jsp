@@ -33,7 +33,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		if("${requestScope.loginFailMsg}" != ""){
-			Swal.fire("${requestScope.loginFailMsg}", "", "error");
+			Swal.fire("", "${requestScope.loginFailMsg}", "error");
 		}
 	});
 </script>	
