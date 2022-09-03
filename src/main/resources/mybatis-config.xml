@@ -21,6 +21,7 @@
 	<typeAliases>
 		<!-- VO -->
 		<package name="info.devcase.common.domain"/>
+		<package name="info.devcase.board.domain"/>
 	</typeAliases>
 	
 </configuration>

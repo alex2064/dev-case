@@ -63,4 +63,15 @@
 	</context:component-scan>
 	
 	
+	<!-- Interceptor 설정 -->
+	<bean id="logInterceptor" class="info.devcase.interceptor.LogInterceptor">
+	</bean>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>	<!-- 인터셉터 할 URL -->
+			<mvc:exclude-mapping path="/resources/**"/>
+			<ref bean="logInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 </beans>

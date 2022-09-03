@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardMapper">
+
+	<select id="selectBoard" parameterType="hashmap" resultType="BoardVO">
+		SELECT SEQ
+			, TITLE
+			, CONTENT
+			, TARGET_CODE
+			, CREATED_DATE
+			, CREATED_BY
+			, IFNULL(UPDATED_DATE, CREATED_DATE) AS UPDATED_DATE
+			, IFNULL(UPDATED_BY, CREATED_BY) AS UPDATED_BY
+		  FROM BAS_BOARD
+		 WHERE IFNULL(UPDATED_DATE, CREATED_DATE) BETWEEN #{frDate} AND #{toDate}
+		 ORDER BY IFNULL(UPDATED_DATE, CREATED_DATE)
+	</select>
+	
+	<insert id="insertBoard" parameterType="hashmap">
+		INSERT INTO BAS_BOARD
+			( TITLE
+			, CONTENT
+			, CREATED_DATE
+			, CREATED_BY )
+		VALUES
+			( #{title}
+			, #{content}
+			, NOW()
+			, #{id} )
+	</insert>
+	
+	<update id="updateBoard" parameterType="hashmap">
+		UPDATE BAS_BOARD
+		   SET TITLE = #{title}
+			, CONTENT = #{content}
+			, UPDATED_DATE = NOW()
+			, UPDATED_BY = #{id}
+		 WHERE SEQ = #{seq}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="hashmap">
+		DELETE FROM BAS_BOARD
+		 WHERE SEQ = #{seq}
+	</delete>
+	
+</mapper>
