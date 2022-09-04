@@ -27,6 +27,15 @@ public class BoardController {
 		
 	}
 	
+	@RequestMapping(value = "/board/list/page", method = RequestMethod.POST)
+	public ModelAndView selectBoard(@RequestBody HashMap<String, Object> param) throws Exception{
+		
+		ModelAndView mv = boardService.selectBoard(param);
+		mv.setViewName("jsonView");
+		
+		return mv;
+	}
+	
 	@RequestMapping(value = "/board/list", method = RequestMethod.POST)
 	public ModelAndView insertBoard(@RequestBody HashMap<String, Object> param) throws Exception{
 		
