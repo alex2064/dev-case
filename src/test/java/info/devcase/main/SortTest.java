@@ -22,7 +22,8 @@ public class SortTest {
 		//ModelMap model = sortService.bubbleSort(param);
 		//ModelMap model = sortService.selectionSort(param);
 		//ModelMap model = sortService.insertionSort(param);
-		ModelMap model = sortService.quickSort(param);
+		//ModelMap model = sortService.quickSort(param);
+		ModelMap model = sortService.mergeSort(param);
 		
 		int[] result = (int[])model.getAttribute("array");	// arr과 동일한 배열
 		

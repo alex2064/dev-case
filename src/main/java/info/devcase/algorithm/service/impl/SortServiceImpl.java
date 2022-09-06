@@ -1,5 +1,6 @@
 package info.devcase.algorithm.service.impl;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
@@ -128,5 +129,50 @@ public class SortServiceImpl implements SortService{
 		arr[left] = pivot;
 		
 		return left;
+	}
+	
+	@Override
+	public ModelMap mergeSort(HashMap<String, Object> param) throws Exception{
+		ModelMap model = new ModelMap();
+		
+		int[] arr = (int[])param.get("array");
+		
+		mergeCut(arr, 0, arr.length-1);
+		
+		model.addAttribute("array", arr);
+		return model;
+	}
+	
+	public void mergeCut(int[] arr, int left, int right) throws Exception{
+		if(left == right) return;
+		
+		int mid = (left+right)/2;
+		
+		// 제일 작은단위로 자른 후 merge 하면서 정렬
+		mergeCut(arr, left, mid);
+		mergeCut(arr, mid+1, right);
+		merge(arr, left, mid, right);
+		
+	}
+	
+	public void merge(int[] arr, int left, int mid, int right) throws Exception{
+		int[] arrLeft = Arrays.copyOfRange(arr, left, mid+1);
+		int[] arrRight = Arrays.copyOfRange(arr, mid+1, right+1);
+		int i = 0, j = 0, k = left;
+		
+		while(i<arrLeft.length && j<arrRight.length) {
+			if(arrLeft[i] <= arrRight[j]) {
+				arr[k++] = arrLeft[i++]; 
+			}else {
+				arr[k++] = arrRight[j++];
+			}
+		}
+		
+		while(i<arrLeft.length) {
+			arr[k++] = arrLeft[i++];
+		}
+		while(j<arrRight.length) {
+			arr[k++] = arrRight[j++];
+		}
 	}
 }
