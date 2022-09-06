@@ -13,4 +13,6 @@ public interface SortService {
 	public ModelMap selectionSort(HashMap<String, Object> param) throws Exception;
 	
 	public ModelMap insertionSort(HashMap<String, Object> param) throws Exception;
+	
+	public ModelMap quickSort(HashMap<String, Object> param) throws Exception;
 }

@@ -76,7 +76,6 @@ public class SortServiceImpl implements SortService{
 				}
 				
 				if(j == 0) {
-					arr[j+1] = arr[j];
 					arr[j] = value;
 				}
 			}
@@ -84,5 +83,50 @@ public class SortServiceImpl implements SortService{
 		
 		model.addAttribute("array", arr);
 		return model;
+	}
+	
+	
+	@Override
+	public ModelMap quickSort(HashMap<String, Object> param) throws Exception{
+		ModelMap model = new ModelMap();
+		
+		int[] arr = (int[])param.get("array");
+		
+		quick(arr, 0, arr.length-1);
+		
+		model.addAttribute("array", arr);
+		return model;
+	}
+	
+	public void quick(int[] arr, int left, int right) throws Exception{
+		if(left >= right) return;
+		
+		int pivot = partition(arr, left, right);
+		
+		// pivot index 기준으로 좌우 다시 퀵정렬
+		quick(arr, left, pivot-1);
+		quick(arr, pivot+1, right);
+		
+	}
+	
+	public int partition(int[] arr, int left, int right) throws Exception{
+		int pivot = arr[left];
+		int i = left;
+		
+		while(left < right) {
+			while(pivot < arr[right]) {
+				right--;
+			}
+			while(pivot >= arr[left] && left < right) {
+				left++;
+			}
+			
+			swap(arr, left, right);
+		}
+		
+		arr[i] = arr[left];
+		arr[left] = pivot;
+		
+		return left;
 	}
 }
