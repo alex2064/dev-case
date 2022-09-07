@@ -17,4 +17,6 @@ public interface SortService {
 	public ModelMap quickSort(HashMap<String, Object> param) throws Exception;
 	
 	public ModelMap mergeSort(HashMap<String, Object> param) throws Exception;
+	
+	public ModelMap heapSort(HashMap<String, Object> param) throws Exception;
 }

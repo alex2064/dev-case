@@ -2,6 +2,9 @@ package info.devcase.algorithm.service.impl;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -175,4 +178,44 @@ public class SortServiceImpl implements SortService{
 			arr[k++] = arrRight[j++];
 		}
 	}
+	
+	
+	@Override
+	public ModelMap heapSort(HashMap<String, Object> param) throws Exception{
+		ModelMap model = new ModelMap();
+		
+		int[] arr = (int[])param.get("array");
+		
+		for(int i=arr.length/2-1; i>= 0; i--) {
+			heapify(arr, i, arr.length-1);
+		}
+		
+		for(int i=1; i<arr.length; i++) {
+			int last = arr.length-i;
+			swap(arr, 0, last);
+			heapify(arr, 0, last-1);
+		}
+		
+		model.addAttribute("array", arr);
+		return model;
+	}
+	
+	public void heapify(int[] arr, int i, int last) throws Exception{
+		int parent = i;
+		int left = i*2+1;
+		int right = i*2+2;
+		
+		if(left <= last && arr[parent] < arr[left]) {
+			parent = left;
+		}
+		if(right <= last && arr[parent] < arr[right]) {
+			parent = right;
+		}
+		
+		if(parent != i) {
+			swap(arr, i, parent);
+			heapify(arr, parent, last);
+		}
+	}
+
 }
