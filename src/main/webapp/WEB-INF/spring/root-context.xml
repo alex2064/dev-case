@@ -75,7 +75,7 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="requiredTx" />
 	</aop:config>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-
+	
 
 	<!-- Scan -->
 	<context:component-scan base-package="info.devcase">
