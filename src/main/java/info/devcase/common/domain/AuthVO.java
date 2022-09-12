@@ -1,19 +1,15 @@
 package info.devcase.common.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthVO {
 	private String id;
 	private String auth;
-	
-	public AuthVO() {
-	}
-	
-	public AuthVO(String id, String auth) {
-		this.id = id;
-		this.auth = auth;
-	}
 }

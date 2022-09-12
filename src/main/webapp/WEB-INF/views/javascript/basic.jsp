@@ -7,7 +7,7 @@
 	let userName = prompt("이름?", "영희");
 	let isTeaWanted = confirm("차 한잔 드릴까요?");
 
-	alert("방문객 : " + userName);
+	alert(`방문객 : ${userName}`);
 	alert("차 주문 여부 : " + isTeaWanted);
 
 
@@ -28,7 +28,8 @@
 
 	// 인자값이 없는경우
 	let say = () => alert("Hello");
-	
+
+	[1,2].forEach(alert);
 </script>	
 
 

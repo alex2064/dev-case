@@ -12,18 +12,15 @@ import info.devcase.common.dao.CommonDAO;
 import info.devcase.common.domain.UserVO;
 import info.devcase.mail.MailService;
 import info.devcase.sign.service.SignService;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Service("SignService")
 public class SignServiceImpl implements SignService{
 
-	@Autowired
-	private CommonDAO commonDAO;
-	
-	@Autowired
-	private BCryptPasswordEncoder pwEncoder;
-	
-	@Autowired
-	private MailService mailService;
+	private final CommonDAO commonDAO;
+	private final BCryptPasswordEncoder pwEncoder;
+	private final MailService mailService;
 	
 	private static String namespace = "SignMapper";
 	
