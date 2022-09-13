@@ -187,7 +187,6 @@
 		</dependency>
 		
 
-
 		<!-- mariadb -->
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
